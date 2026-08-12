@@ -1,0 +1,407 @@
+/* ============================================
+   Skills.css — Portfolio Software Skills Slide
+   Exact match: black bg + blue radial glow +
+   cascading diagonal icon stack (right side)
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;700;800;900&display=swap');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ── Root section ────────────────────────────── */
+.skills-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Barlow', sans-serif;
+}
+
+/* ── Blue radial glow (right) — matches image ── */
+.skills-section::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -8%;
+  width: 70%;
+  height: 140%;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 45%,
+      #1a6cff 0%,
+      #0d40d4 30%,
+      #0820a8 55%,
+      transparent 78%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Left: "SOFTWARE SKILLS" title ───────────── */
+.skills-title {
+  position: relative;
+  z-index: 2;
+  padding-left: 7%;
+  width: 38%;
+  flex-shrink: 0;
+  animation: titleSlideIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+}
+
+.skills-title h2 {
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1.02;
+  letter-spacing: 0.015em;
+}
+
+/* ── Center floating label ───────────────────── */
+.skills-center-label{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  z-index:2;
+  transition: all .35s ease;
+  color:#fff;
+  font-size:22px;
+  font-weight:700;
+
+  min-width:220px;
+  text-align:center;
+}
+
+/* ── Author bottom-left ──────────────────────── */
+.skills-author {
+  position: absolute;
+  bottom: 7%;
+  left: 7%;
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.65rem;
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  animation: fadeUp 0.8s ease 0.7s both;
+}
+
+/* ── Right: cascading icon stack ─────────────── */
+.skills-stack{
+  position:absolute;
+  right:8%;
+  top:50%;
+  width:280px;
+  height:650px;
+  transform:translateY(-50%);
+}
+
+/* ── Each icon card ──────────────────────────── */
+.skill-card{
+  position:absolute;
+  width:110px;
+  height:110px;
+  border-radius:20px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  gap:5px;
+  overflow:hidden;
+  cursor:pointer;
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,.45);
+
+  transition:
+  transform .8s cubic-bezier(.22,1,.36,1),
+  box-shadow .4s ease;
+}
+
+/* gloss sheen */
+.skill-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    140deg,
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(255, 255, 255, 0.06) 40%,
+    transparent 65%
+  );
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.skill-card:hover {
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.65),
+    0 5px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Diagonal cascade offsets (matches image) ── */
+.skill-card:nth-child(1){
+  top:0;
+  right:0;
+}
+
+.skill-card:nth-child(2){
+  top:65px;
+  right:40px;
+}
+
+.skill-card:nth-child(3){
+  top:130px;
+  right:80px;
+}
+
+.skill-card:nth-child(4){
+  top:195px;
+  right:120px;
+}
+
+.skill-card:nth-child(5){
+  top:260px;
+  right:160px;
+}
+
+.skill-card:nth-child(6){
+  top:325px;
+  right:120px;
+}
+
+.skill-card:nth-child(7){
+  top:390px;
+  right:80px;
+}
+
+.skill-card:nth-child(8){
+  top:455px;
+  right:40px;
+}
+
+.skill-card:nth-child(9){
+  top:520px;
+  right:0;
+}
+/* ── Continuous float after entrance ─────────── */
+.skill-card:nth-child(odd)  { animation: cardSlideIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both, floatBob 3.2s ease-in-out infinite; }
+.skill-card:nth-child(even) { animation: cardSlideIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both, floatBob 3.8s ease-in-out 0.4s infinite; }
+
+/* Stagger entrance + independent float offset */
+.skill-card:nth-child(1)  { animation-delay: 0.08s, 0.0s; }
+.skill-card:nth-child(2)  { animation-delay: 0.18s, 0.4s; }
+.skill-card:nth-child(3)  { animation-delay: 0.28s, 0.0s; }
+.skill-card:nth-child(4)  { animation-delay: 0.38s, 0.6s; }
+.skill-card:nth-child(5)  { animation-delay: 0.48s, 0.0s; }
+.skill-card:nth-child(6)  { animation-delay: 0.58s, 0.8s; }
+.skill-card:nth-child(7)  { animation-delay: 0.68s, 0.0s; }
+.skill-card:nth-child(8)  { animation-delay: 0.78s, 0.5s; }
+.skill-card:nth-child(9)  { animation-delay: 0.88s, 0.0s; }
+
+/* ── Icon image inside card ──────────────────── */
+.skill-card-icon {
+  width: clamp(30px, 4vw, 48px);
+  height: clamp(30px, 4vw, 48px);
+  object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-card-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Label text ──────────────────────────────── */
+.skill-card-label {
+  font-size: clamp(0.48rem, 0.75vw, 0.72rem);
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1;
+}
+
+/* ── Card brand colors ────────────────────────── */
+.card--html5   { background: linear-gradient(145deg, #d4390a, #f05a1a); }
+.card--css3    { background: linear-gradient(145deg, #0d5fa3, #2196c9); }
+.card--js      { background: linear-gradient(145deg, #d4b800, #f0d800); }
+.card--js .skill-card-label { color: #1a1200; }
+.card--react   { background: linear-gradient(145deg, #1c2030, #23303f); }
+.card--git     { background: linear-gradient(145deg, #c73620, #e84d30); }
+.card--github  { background: linear-gradient(145deg, #1a1a2e, #24292f); }
+.card--postman { background: linear-gradient(145deg, #c03000, #ef5b25); }
+.card--vscode  { background: linear-gradient(145deg, #0068b0, #007acc); }
+.card--npm     { background: linear-gradient(145deg, #a02020, #cc3333); }
+
+/* ── Tooltip on hover ────────────────────────── */
+.skill-card-tooltip {
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translate(-100%, -50%) scale(0.85);
+  background: rgba(0, 0, 0, 0.88);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 7px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  letter-spacing: 0.02em;
+}
+
+.skill-card:hover .skill-card-tooltip {
+  opacity: 1;
+  transform: translate(-100%, -50%) scale(1);
+}
+
+/* ── Keyframes ───────────────────────────────── */
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(70px) scale(0.75);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0px) scale(1);
+  }
+}
+
+@keyframes floatBob {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-5px); }
+}
+
+@keyframes titleSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-45px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 12px));
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 768px) {
+  .skills-section {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 60px 5% 40px;
+    min-height: auto;
+    gap: 24px;
+  }
+
+  .skills-section::before {
+    right: -30%;
+    top: 0;
+    height: 60%;
+    width: 100%;
+  }
+
+  .skills-title {
+    position: relative;
+    width: 100%;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .selected-skill {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+  }
+
+  .skills-stack {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .skill-card {
+    position: relative;
+    top: auto !important;
+    right: auto !important;
+    width: 78px;
+    height: 78px;
+    border-radius: 16px;
+  }
+
+  .skills-author {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+.active-card{
+  transform: scale(1.15) !important;
+
+  box-shadow:
+    0 0 20px rgba(255,255,255,.2),
+    0 0 50px rgba(0,100,255,.5);
+
+  border:2px solid rgba(255,255,255,.2);
+
+  z-index:100;
+}
+
+.inactive-card{
+  opacity:.6;
+}
+
+
+.selected-skill{
+  position:absolute;
+  left:45%;
+  top:50%;
+  transform:translateY(-50%);
+
+  font-size:35px;
+  font-weight:1000;
+  color:#fff;
+
+  text-shadow:0 0 20px rgba(255,255,255,.3);
+}

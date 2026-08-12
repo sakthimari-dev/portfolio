@@ -1,0 +1,28 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        primary: "#8B2FE0",
+        primaryDark: "#5B1AA8",
+        accent: "#FF7A1A",
+        dark: "#0D0D0D",
+      },
+      fontFamily: {
+        heading: ["Anton", "sans-serif"],
+        nav: ["Bebas Neue", "sans-serif"],
+      },
+      animation: {
+        marquee: "marquee 25s linear infinite",
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
+    },
+  },
+  plugins: [],
+}
