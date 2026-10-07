@@ -1,7 +1,6 @@
 /* ============================================
    Skills.css — Portfolio Software Skills Slide
-   Exact match: black bg + blue radial glow +
-   cascading diagonal icon stack (right side)
+   12 cards cascade (chevron shape) on right side
    ============================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;700;800;900&display=swap');
@@ -26,7 +25,7 @@
   font-family: 'Barlow', sans-serif;
 }
 
-/* ── Blue radial glow (right) — matches image ── */
+/* ── Blue radial glow (right) ────────────────── */
 .skills-section::before {
   content: '';
   position: absolute;
@@ -63,69 +62,37 @@
   letter-spacing: 0.015em;
 }
 
-/* ── Center floating label ───────────────────── */
-.skills-center-label{
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%);
-  z-index:2;
-  transition: all .35s ease;
-  color:#fff;
-  font-size:22px;
-  font-weight:700;
-
-  min-width:220px;
-  text-align:center;
-}
-
-/* ── Author bottom-left ──────────────────────── */
-.skills-author {
-  position: absolute;
-  bottom: 7%;
-  left: 7%;
-  z-index: 2;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.65rem;
-  font-weight: 700;
-  line-height: 1.45;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  animation: fadeUp 0.8s ease 0.7s both;
-}
-
 /* ── Right: cascading icon stack ─────────────── */
-.skills-stack{
-  position:absolute;
-  right:8%;
-  top:50%;
-  width:280px;
-  height:650px;
-  transform:translateY(-50%);
+.skills-stack {
+  position: absolute;
+  right: 8%;
+  top: 50%;
+  width: 280px;
+  height: 700px;
+  transform: translateY(-50%);
 }
 
 /* ── Each icon card ──────────────────────────── */
-.skill-card{
-  position:absolute;
-  width:110px;
-  height:110px;
-  border-radius:20px;
+.skill-card {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 20px;
 
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  gap:5px;
-  overflow:hidden;
-  cursor:pointer;
+  gap: 5px;
+  overflow: hidden;
+  cursor: pointer;
 
-  box-shadow:
-  0 10px 30px rgba(0,0,0,.45);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
 
   transition:
-  transform .8s cubic-bezier(.22,1,.36,1),
-  box-shadow .4s ease;
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
 }
 
 /* gloss sheen */
@@ -149,67 +116,39 @@
     0 5px 14px rgba(0, 0, 0, 0.4);
 }
 
-/* ── Diagonal cascade offsets (matches image) ── */
-.skill-card:nth-child(1){
-  top:0;
-  right:0;
-}
+/* ── Diagonal cascade offsets (12 cards) ─────── */
+.skill-card:nth-child(1)  { top: 0px;   right: 0px;   }
+.skill-card:nth-child(2)  { top: 52px;  right: 30px;  }
+.skill-card:nth-child(3)  { top: 104px; right: 60px;  }
+.skill-card:nth-child(4)  { top: 156px; right: 90px;  }
+.skill-card:nth-child(5)  { top: 208px; right: 120px; }
+.skill-card:nth-child(6)  { top: 260px; right: 150px; }
+.skill-card:nth-child(7)  { top: 312px; right: 150px; }
+.skill-card:nth-child(8)  { top: 364px; right: 120px; }
+.skill-card:nth-child(9)  { top: 416px; right: 90px;  }
+.skill-card:nth-child(10) { top: 468px; right: 60px;  }
+.skill-card:nth-child(11) { top: 520px; right: 30px;  }
+.skill-card:nth-child(12) { top: 572px; right: 0px;   }
 
-.skill-card:nth-child(2){
-  top:65px;
-  right:40px;
-}
-
-.skill-card:nth-child(3){
-  top:130px;
-  right:80px;
-}
-
-.skill-card:nth-child(4){
-  top:195px;
-  right:120px;
-}
-
-.skill-card:nth-child(5){
-  top:260px;
-  right:160px;
-}
-
-.skill-card:nth-child(6){
-  top:325px;
-  right:120px;
-}
-
-.skill-card:nth-child(7){
-  top:390px;
-  right:80px;
-}
-
-.skill-card:nth-child(8){
-  top:455px;
-  right:40px;
-}
-
-.skill-card:nth-child(9){
-  top:520px;
-  right:0;
-}
 /* ── Continuous float after entrance ─────────── */
 .skill-card:nth-child(odd)  { animation: cardSlideIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both, floatBob 3.2s ease-in-out infinite; }
 .skill-card:nth-child(even) { animation: cardSlideIn 0.6s cubic-bezier(0.34,1.56,0.64,1) both, floatBob 3.8s ease-in-out 0.4s infinite; }
 
 /* Stagger entrance + independent float offset */
 .skill-card:nth-child(1)  { animation-delay: 0.08s, 0.0s; }
-.skill-card:nth-child(2)  { animation-delay: 0.18s, 0.4s; }
-.skill-card:nth-child(3)  { animation-delay: 0.28s, 0.0s; }
-.skill-card:nth-child(4)  { animation-delay: 0.38s, 0.6s; }
-.skill-card:nth-child(5)  { animation-delay: 0.48s, 0.0s; }
-.skill-card:nth-child(6)  { animation-delay: 0.58s, 0.8s; }
-.skill-card:nth-child(7)  { animation-delay: 0.68s, 0.0s; }
-.skill-card:nth-child(8)  { animation-delay: 0.78s, 0.5s; }
-.skill-card:nth-child(9)  { animation-delay: 0.88s, 0.0s; }
+.skill-card:nth-child(2)  { animation-delay: 0.16s, 0.4s; }
+.skill-card:nth-child(3)  { animation-delay: 0.24s, 0.0s; }
+.skill-card:nth-child(4)  { animation-delay: 0.32s, 0.6s; }
+.skill-card:nth-child(5)  { animation-delay: 0.40s, 0.0s; }
+.skill-card:nth-child(6)  { animation-delay: 0.48s, 0.8s; }
+.skill-card:nth-child(7)  { animation-delay: 0.56s, 0.0s; }
+.skill-card:nth-child(8)  { animation-delay: 0.64s, 0.5s; }
+.skill-card:nth-child(9)  { animation-delay: 0.72s, 0.0s; }
+.skill-card:nth-child(10) { animation-delay: 0.80s, 0.3s; }
+.skill-card:nth-child(11) { animation-delay: 0.88s, 0.0s; }
+.skill-card:nth-child(12) { animation-delay: 0.96s, 0.7s; }
 
-/* ── Icon image inside card ──────────────────── */
+/* ── Icon inside card ────────────────────────── */
 .skill-card-icon {
   width: clamp(30px, 4vw, 48px);
   height: clamp(30px, 4vw, 48px);
@@ -234,12 +173,15 @@
   line-height: 1;
 }
 
-/* ── Card brand colors ────────────────────────── */
+/* ── Card brand colors ───────────────────────── */
 .card--html5   { background: linear-gradient(145deg, #d4390a, #f05a1a); }
 .card--css3    { background: linear-gradient(145deg, #0d5fa3, #2196c9); }
 .card--js      { background: linear-gradient(145deg, #d4b800, #f0d800); }
 .card--js .skill-card-label { color: #1a1200; }
 .card--react   { background: linear-gradient(145deg, #1c2030, #23303f); }
+.card--node    { background: linear-gradient(145deg, #1d2b1a, #2d4a28); }
+.card--express { background: linear-gradient(145deg, #2b2b2b, #4a4a4a); }
+.card--mysql   { background: linear-gradient(145deg, #0b3d5c, #1b6f99); }
 .card--git     { background: linear-gradient(145deg, #c73620, #e84d30); }
 .card--github  { background: linear-gradient(145deg, #1a1a2e, #24292f); }
 .card--postman { background: linear-gradient(145deg, #c03000, #ef5b25); }
@@ -272,6 +214,34 @@
   transform: translate(-100%, -50%) scale(1);
 }
 
+/* ── Active / inactive card states ───────────── */
+.active-card {
+  transform: scale(1.15) !important;
+  box-shadow:
+    0 0 20px rgba(255, 255, 255, 0.2),
+    0 0 50px rgba(0, 100, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  z-index: 100;
+}
+
+.inactive-card {
+  opacity: 0.6;
+}
+
+/* ── Selected skill name (center) ────────────── */
+.selected-skill {
+  position: absolute;
+  left: 45%;
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: 35px;
+  font-weight: 900;
+  color: #fff;
+
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
 /* ── Keyframes ───────────────────────────────── */
 @keyframes cardSlideIn {
   from {
@@ -286,7 +256,7 @@
 
 @keyframes floatBob {
   0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-5px); }
+  50%      { transform: translateY(-5px); }
 }
 
 @keyframes titleSlideIn {
@@ -297,17 +267,6 @@
   to {
     opacity: 1;
     transform: translateX(0);
-  }
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translate(-50%, calc(-50% + 12px));
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%);
   }
 }
 
@@ -366,42 +325,4 @@
     height: 78px;
     border-radius: 16px;
   }
-
-  .skills-author {
-    position: relative !important;
-    bottom: auto !important;
-    left: auto !important;
-    text-align: center;
-    width: 100%;
-  }
-}
-
-.active-card{
-  transform: scale(1.15) !important;
-
-  box-shadow:
-    0 0 20px rgba(255,255,255,.2),
-    0 0 50px rgba(0,100,255,.5);
-
-  border:2px solid rgba(255,255,255,.2);
-
-  z-index:100;
-}
-
-.inactive-card{
-  opacity:.6;
-}
-
-
-.selected-skill{
-  position:absolute;
-  left:45%;
-  top:50%;
-  transform:translateY(-50%);
-
-  font-size:35px;
-  font-weight:1000;
-  color:#fff;
-
-  text-shadow:0 0 20px rgba(255,255,255,.3);
 }

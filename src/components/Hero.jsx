@@ -11,6 +11,9 @@ const colors = [
   { name: "orange", hex: "#FB923C", grad: "from-orange-800 via-orange-600 to-orange-500" },
 ];
 
+const photoMask =
+  "linear-gradient(to bottom, transparent 0%, black 8%, black 75%, transparent 100%), linear-gradient(to right, transparent 0%, black 6%, black 88%, transparent 100%)";
+
 export default function Hero() {
   const [theme, setTheme] = useState(colors[3]);
   const [pos, setPos] = useState({ x: 50, y: 50 });
@@ -27,7 +30,7 @@ export default function Hero() {
       onMouseMove={handleMouseMove}
       className={`relative min-h-screen w-full overflow-hidden bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] ${theme.grad} flex items-center justify-center transition-colors duration-700`}
     >
-    <h2 className="absolute text-[16vw] md:text-[15.5vw] font-heading text-white/15 tracking-tight select-none leading-none whitespace-nowrap">
+      <h2 className="absolute text-[16vw] md:text-[15.5vw] font-heading text-white/15 tracking-tight select-none leading-none whitespace-nowrap">
         PORTFOLIO
       </h2>
 
@@ -50,10 +53,19 @@ export default function Hero() {
           initial={{ opacity: 0, filter: "blur(20px)", scale: 0.9 }}
           animate={{ opacity: 1, filter: "blur(0px)", scale: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="relative w-52 md:w-72 aspect-[3/4] overflow-hidden shadow-2xl shadow-black/50"
+          className="relative w-52 md:w-72 aspect-[3/4]"
         >
-          <img src={myPhoto} alt="profile" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+          <img
+  src={myPhoto}
+  alt="profile"
+  className="w-full h-full object-cover"
+  style={{
+    maskImage: photoMask,
+    WebkitMaskImage: photoMask,
+    maskComposite: "intersect",
+    WebkitMaskComposite: "source-in",
+  }}
+/>
         </motion.div>
       </motion.div>
 

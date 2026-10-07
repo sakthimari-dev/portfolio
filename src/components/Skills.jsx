@@ -1,7 +1,6 @@
 // ============================================
 //  Skills.js — Portfolio Software Skills Slide
-//  Exact match: black bg + blue radial glow +
-//  cascading diagonal icon stack (right side)
+//  12 skills: Frontend + Backend (Node, Express, MySQL)
 // ============================================
 import React, { useState } from 'react';
 import './Skills.css';
@@ -58,6 +57,43 @@ const ReactIcon = () => (
       stroke="#61DAFB" strokeWidth="1.5" fill="none"
       transform="rotate(120 16 16)"
     />
+  </svg>
+);
+
+const NodeIcon = () => (
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 2L28 9V23L16 30L4 23V9L16 2Z" fill="#539E43"/>
+    <path
+      d="M12 21V11L20 21V11"
+      stroke="white"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const ExpressIcon = () => (
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <text
+      x="16"
+      y="22"
+      textAnchor="middle"
+      fontSize="16"
+      fontWeight="700"
+      fontFamily="Arial, sans-serif"
+      fill="white"
+    >
+      ex
+    </text>
+  </svg>
+);
+
+const MySQLIcon = () => (
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="16" cy="8" rx="11" ry="4" fill="#00B4D8"/>
+    <path d="M5 8v6c0 2.2 4.9 4 11 4s11-1.8 11-4V8c0 2.2-4.9 4-11 4S5 10.2 5 8z" fill="#0077A8"/>
+    <path d="M5 14v6c0 2.2 4.9 4 11 4s11-1.8 11-4v-6c0 2.2-4.9 4-11 4S5 16.2 5 14z" fill="#F29111"/>
   </svg>
 );
 
@@ -152,24 +188,24 @@ const NPMIcon = () => (
 // ── Skills data ──────────────────────────────
 
 const SKILLS = [
-  { id: 'html5',   label: 'HTML5',      cardClass: 'card--html5',   Icon: HTML5Icon,   tooltip: 'HTML5'      },
-  { id: 'css3',    label: 'CSS3',       cardClass: 'card--css3',    Icon: CSS3Icon,    tooltip: 'CSS3'       },
+  { id: 'html5',   label: 'HTML5',          cardClass: 'card--html5',   Icon: HTML5Icon,   tooltip: 'HTML5'      },
+  { id: 'css3',    label: 'CSS3',           cardClass: 'card--css3',    Icon: CSS3Icon,    tooltip: 'CSS3'       },
   { id: 'js',      label: 'JavaScript-ES6', cardClass: 'card--js',      Icon: JSIcon,      tooltip: 'JavaScript' },
-  { id: 'react',   label: 'React.js',   cardClass: 'card--react',   Icon: ReactIcon,   tooltip: 'React.js'   },
-  { id: 'git',     label: 'Git',        cardClass: 'card--git',     Icon: GitIcon,     tooltip: 'Git'        },
-  { id: 'github',  label: 'GitHub',     cardClass: 'card--github',  Icon: GitHubIcon,  tooltip: 'GitHub'     },
-  { id: 'postman', label: 'Postman',    cardClass: 'card--postman', Icon: PostmanIcon, tooltip: 'Postman'    },
-  { id: 'vscode',  label: 'VS Code',    cardClass: 'card--vscode',  Icon: VSCodeIcon,  tooltip: 'VS Code'    },
-  { id: 'npm',     label: 'NPM',        cardClass: 'card--npm',     Icon: NPMIcon,     tooltip: 'NPM'        },
+  { id: 'react',   label: 'React.js',       cardClass: 'card--react',   Icon: ReactIcon,   tooltip: 'React.js'   },
+  { id: 'node',    label: 'Node.js',        cardClass: 'card--node',    Icon: NodeIcon,    tooltip: 'Node.js'    },
+  { id: 'express', label: 'Express.js',     cardClass: 'card--express', Icon: ExpressIcon, tooltip: 'Express.js' },
+  { id: 'mysql',   label: 'MySQL',          cardClass: 'card--mysql',   Icon: MySQLIcon,   tooltip: 'MySQL'      },
+  { id: 'git',     label: 'Git',            cardClass: 'card--git',     Icon: GitIcon,     tooltip: 'Git'        },
+  { id: 'github',  label: 'GitHub',         cardClass: 'card--github',  Icon: GitHubIcon,  tooltip: 'GitHub'     },
+  { id: 'postman', label: 'Postman',        cardClass: 'card--postman', Icon: PostmanIcon, tooltip: 'Postman'    },
+  { id: 'vscode',  label: 'VS Code',        cardClass: 'card--vscode',  Icon: VSCodeIcon,  tooltip: 'VS Code'    },
+  { id: 'npm',     label: 'NPM',            cardClass: 'card--npm',     Icon: NPMIcon,     tooltip: 'NPM'        },
 ];
 
 // ── Component ────────────────────────────────
 
 const Skills = () => {
-
- const [activeIndex, setActiveIndex] = useState(0);
-
-
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <section className="skills-section">
@@ -179,34 +215,31 @@ const Skills = () => {
         <h2>SOFTWARE<br />SKILLS</h2>
       </div>
 
-     
-      {/* Author credit */}
-      
-
+      {/* Center: selected skill name */}
       <div className="selected-skill">
-  {SKILLS[activeIndex].label}
-</div>
-
-      {/* Right: cascading icon stack */}
- <div className="skills-stack">
-  {SKILLS.map(({ id, label, cardClass, Icon, tooltip }, index) => (
-    <div
-      key={id}
-      onClick={() => setActiveIndex(index)}
-      className={`skill-card ${cardClass} ${
-        activeIndex === index ? "active-card" : "inactive-card"
-      }`}
-    >
-      <span className="skill-card-tooltip">{tooltip}</span>
-
-      <div className="skill-card-icon">
-        <Icon />
+        {SKILLS[activeIndex].label}
       </div>
 
-      <span className="skill-card-label">{label}</span>
-    </div>
-  ))}
-</div>
+      {/* Right: cascading icon stack */}
+      <div className="skills-stack">
+        {SKILLS.map(({ id, label, cardClass, Icon, tooltip }, index) => (
+          <div
+            key={id}
+            onClick={() => setActiveIndex(index)}
+            className={`skill-card ${cardClass} ${
+              activeIndex === index ? 'active-card' : 'inactive-card'
+            }`}
+          >
+            <span className="skill-card-tooltip">{tooltip}</span>
+
+            <div className="skill-card-icon">
+              <Icon />
+            </div>
+
+            <span className="skill-card-label">{label}</span>
+          </div>
+        ))}
+      </div>
 
     </section>
   );

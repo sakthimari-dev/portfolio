@@ -14,13 +14,20 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="absolute top-0 left-0 w-full flex flex-col px-8 md:px-16 py-6 z-20">
-      <div className="flex items-center justify-between w-full">
+    <nav className="absolute top-0 left-0 w-full flex flex-col px-5 sm:px-8 md:px-16 py-5 md:py-6 z-20">
+      <div className="flex items-center justify-between w-full gap-4">
+        {/* logo */}
         <h1
           onClick={() => scrollToSection("home")}
-          className="font-nav text-2xl font-bold tracking-wide cursor-pointer"
+          className="font-nav text-xl sm:text-2xl md:text-4xl font-extrabold tracking-tight
+                     whitespace-nowrap cursor-pointer text-white
+                     drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]
+                     transition-transform duration-300 md:hover:scale-105"
         >
-          Sakthimari<span className="text-white/60">.Dev</span>
+          Sakthimari
+          <span className="text-yellow-400 md:drop-shadow-[0_0_14px_rgba(250,204,21,0.6)]">
+            .Dev
+          </span>
         </h1>
 
         {/* desktop links */}
@@ -39,7 +46,7 @@ export default function Navbar() {
         {/* hamburger button — mobile only */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden flex flex-col gap-1.5 w-8 h-8 items-center justify-center"
+          className="md:hidden shrink-0 flex flex-col gap-1.5 w-8 h-8 items-center justify-center"
           aria-label="Toggle menu"
         >
           <span
